@@ -1,7 +1,3 @@
-# xOCD Toolbox — native Windows edition
-
-Version **v0.1**. Keep this public version until nothoov requests a change. This project builds the xOCD Toolbox application and its owned tool engines as one native C++20 Windows x64 executable, with the original DDU, NVCleanstall, NVIDIA Profile Inspector, and ISLC utilities retained. Historical development records retain their original build labels.
-
 ## Startup update check
 
 Toolbox checks the latest published release in [nothoov/xOCD-ToolBox](https://github.com/nothoov/xOCD-ToolBox) once when the main application opens. The check runs in the background after startup and does not repeat when changing tabs. Helper processes do not perform it. An available update produces a notice and a **View update** action in Overview; no EXE is automatically downloaded or installed. Missing releases, an offline connection and API errors remain quiet status messages, without blocking the application or being reported as up to date.

@@ -41,10 +41,6 @@ Sensor support depends on the CPU, GPU, firmware, installed driver, and provider
 
 Native WinRT AppX operations, Delivery Optimization's installed CIM provider, live NVCleanstall UI automation, NVAPI display/profile changes, and first-run elevation still need Windows validation. An unavailable provider or an unverified result is reported rather than treated as success. Vendor UI changes or unsupported hardware can require an update to the corresponding adapter code.
 
-## Source and notices
-
-`src`, `include`, and `tests` contain the application source and policy checks. The four COD files and both power-plan files are the supplied original payloads. `data/windows_catalog.json` preserves the existing card/service/control definitions; legacy `.ps1` strings there are stable card identifiers and provenance, not executable script dependencies.
-
-`src/telemetry/cpu.cpp`, its two included implementation files, and `include/xocd/cpu.hpp` are the supplied xOCD native CPU provider. The signed sensor module assets are retained unmodified. The PawnIO module license and corresponding module source archive are included under `licenses`.
+## Notices
 
 NVIDIA's notice is in `licenses/NVIDIA-NVML-LICENSE.txt`; retain its full disclaimer and U.S. Government End Users Notice when distributing this source or documentation. Other third-party notices accompany their sources and vendor payload directories. No private signing key is included. This build does not add an Authenticode signature to the Toolbox executable.

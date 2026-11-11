@@ -31,53 +31,6 @@ New session results are stored under `%LOCALAPPDATA%\xOCD\Toolbox\Native\Session
 
 Driver versions come from NVCleanstall's current compatible catalog when the workflow opens it. There is no frozen driver-version list. A newly published NVIDIA release becomes selectable when that upstream catalog exposes it for the detected hardware; this is not a guarantee that every release will appear within an hour.
 
-## Build on Windows
-
-Requirements are Visual Studio 2022 C++ Build Tools (Desktop development with C++ and the Windows SDK), CMake 3.24 or newer, and Python 3.9 or newer. Python is used only to construct the embedded resource archive at build time.
-
-Extract the complete source ZIP, including `payload`, `assets`, `licenses`, and `third-party`. From that folder:
-
-```bat
-Build.cmd
-```
-
-To request prerequisite installation through Windows Package Manager:
-
-```bat
-Build.cmd -InstallPrerequisites
-```
-
-To also build and run the available portable policy tests on Windows:
-
-```bat
-Build.cmd -PolicyTests
-```
-
-The expected MSVC output is `build-windows\bin\Release\xOCD Toolbox.exe`. `Build.ps1` is a developer build script; the resulting Toolbox does not invoke it.
-
-Direct CMake configuration is also available:
-
-```bat
-cmake -S . -B build-windows -G "Visual Studio 17 2022" -A x64
-cmake --build build-windows --config Release --parallel
-```
-
-## Cross-build used for this deliverable
-
-The supplied EXE was cross-compiled with the pinned GCC/MinGW-w64 x64 toolchain. It was not built with MSVC. The project also includes the MSVC build configuration for Windows, which has not been executed in this environment.
-
-The private Linux toolchain can be restored from the package receipt without installing it system-wide:
-
-```sh
-python3 tools/cross/restore_native_tooling.py
-tools/cross/bin/cmake -S . -B build-cross -G Ninja \
-  -DCMAKE_TOOLCHAIN_FILE="$PWD/tools/cross/mingw-x64.cmake" \
-  -DCMAKE_BUILD_TYPE=Release
-tools/cross/bin/cmake --build build-cross --parallel 3
-```
-
-The restore script downloads hash-pinned official Debian packages and uses `dpkg-deb` to unpack them. It requires Linux x64, Python 3, and network access. Cross-building does not execute the Windows program. The C++ runtime is statically linked in the supplied MinGW build.
-
 ## Validation and limits
 
 See `validation/build-report.json` in the delivered source bundle for the exact final binary hashes, PE architecture/import checks, embedded resource checks, route coverage, and policy-test results.

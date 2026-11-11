@@ -1,7 +1,3 @@
-## Startup update check
-
-Toolbox checks the latest published release in [nothoov/xOCD-ToolBox](https://github.com/nothoov/xOCD-ToolBox) once when the main application opens. The check runs in the background after startup and does not repeat when changing tabs. Helper processes do not perform it. An available update produces a notice and a **View update** action in Overview; no EXE is automatically downloaded or installed. Missing releases, an offline connection and API errors remain quiet status messages, without blocking the application or being reported as up to date.
-
 ## Starting the application
 
 Open **xOCD Toolbox.exe** on 64-bit Windows 10 or Windows 11. Normal startup requests administrator access. The native title bar can be dragged, and the top-right controls minimize, maximize/restore, and close the window.

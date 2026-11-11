@@ -27,16 +27,6 @@ New session results are stored under `%LOCALAPPDATA%\xOCD\Toolbox\Native\Session
 
 Driver versions come from NVCleanstall's current compatible catalog when the workflow opens it. There is no frozen driver-version list. A newly published NVIDIA release becomes selectable when that upstream catalog exposes it for the detected hardware; this is not a guarantee that every release will appear within an hour.
 
-## Validation and limits
-
-See `validation/build-report.json` in the delivered source bundle for the exact final binary hashes, PE architecture/import checks, embedded resource checks, route coverage, and policy-test results.
-
-The source was compiled and linked, and the portable policy tests were run. The Windows application, its UI, driver installations, registry/service mutations, and hardware-specific operations were **not executed in this environment**. This revision still needs validation on Windows. The previous v6 package is preserved separately.
-
-Sensor support depends on the CPU, GPU, firmware, installed driver, and provider access. The native CPU provider is carried forward from the supplied xOCD 2.1.0 source. NVIDIA readings use native installed driver libraries and, where supported, the signed PawnIO module. Unsupported or stale values remain unavailable. This conversion does not bundle the old managed general motherboard/RAM sensor stack; it does not guarantee every former motherboard, fan, or DIMM sensor row.
-
-Native WinRT AppX operations, Delivery Optimization's installed CIM provider, live NVCleanstall UI automation, NVAPI display/profile changes, and first-run elevation still need Windows validation. An unavailable provider or an unverified result is reported rather than treated as success. Vendor UI changes or unsupported hardware can require an update to the corresponding adapter code.
-
 ## Notices
 
 NVIDIA's notice is in `licenses/NVIDIA-NVML-LICENSE.txt`; retain its full disclaimer and U.S. Government End Users Notice when distributing this source or documentation. Other third-party notices accompany their sources and vendor payload directories. No private signing key is included. This build does not add an Authenticode signature to the Toolbox executable.
